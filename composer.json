@@ -28,9 +28,8 @@
     "symfony/validator": "6.1.*",
     "doctrine/orm": "^2.12",
     "doctrine/doctrine-bundle": "^2.7",
-    "symfony/dependency-injection": "6.1.*"
-  },
-  "require-dev": {
+    "symfony/dependency-injection": "6.1.*",
+    "gedmo/doctrine-extensions": "^3.8"
   },
   "autoload": {
     "psr-4": {
