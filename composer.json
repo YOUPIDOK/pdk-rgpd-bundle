@@ -10,10 +10,10 @@
     "sonata-project/admin-bundle": "^4.10.0",
     "ext-json": "*",
     "ext-zip": "*",
-    "symfony/console": "^6.1.*",
+    "symfony/console": "6.1.*",
     "doctrine/orm": "^2.12",
     "doctrine/doctrine-bundle": "^2.7",
-    "symfony/dependency-injection": "^6.1.*"
+    "symfony/dependency-injection": "6.1.*"
   },
   "require-dev": {
   },
