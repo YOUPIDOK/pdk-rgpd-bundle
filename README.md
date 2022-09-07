@@ -23,4 +23,19 @@
 ``composer require pdk/rgpd-bundle``
 
 ## Configuration
+### Sonata admin
+```yaml
+# config/packages/sonata/sonata_admin.yaml
+sonata_admin:
+    dashboard:
+        groups:
+            rgpd:
+                label: RGPD
+                icon: '<i class="fa fa-file-text-o"></i>'
+                items:
+                    - pdk.rgpd.admin.privacy_policy
+                    - pdk.rgpd.admin.gcu
+```
+
+
         

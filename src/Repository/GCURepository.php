@@ -2,27 +2,27 @@
 
 namespace Pdk\RgpdBundle\Repository;
 
-use Pdk\RgpdBundle\Entity\CGU;
+use Pdk\RgpdBundle\Entity\GCU;
 use DateTime;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
- * @extends ServiceEntityRepository<CGU>
+ * @extends ServiceEntityRepository<GCU>
  *
- * @method CGU|null find($id, $lockMode = null, $lockVersion = null)
- * @method CGU|null findOneBy(array $criteria, array $orderBy = null)
- * @method CGU[]    findAll()
- * @method CGU[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
+ * @method GCU|null find($id, $lockMode = null, $lockVersion = null)
+ * @method GCU|null findOneBy(array $criteria, array $orderBy = null)
+ * @method GCU[]    findAll()
+ * @method GCU[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
-class CGURepository extends ServiceEntityRepository
+class GCURepository extends ServiceEntityRepository
 {
     public function __construct(ManagerRegistry $registry)
     {
-        parent::__construct($registry, CGU::class);
+        parent::__construct($registry, GCU::class);
     }
 
-    public function add(CGU $entity, bool $flush = false): void
+    public function add(GCU $entity, bool $flush = false): void
     {
         $this->getEntityManager()->persist($entity);
 
@@ -31,7 +31,7 @@ class CGURepository extends ServiceEntityRepository
         }
     }
 
-    public function remove(CGU $entity, bool $flush = false): void
+    public function remove(GCU $entity, bool $flush = false): void
     {
         $this->getEntityManager()->remove($entity);
 
@@ -40,7 +40,7 @@ class CGURepository extends ServiceEntityRepository
         }
     }
 
-    public function findCurrentCGU()
+    public function findCurrentGCU()
     {
         return $this
             ->createQueryBuilder('p')
@@ -54,7 +54,7 @@ class CGURepository extends ServiceEntityRepository
     }
 
 //    /**
-//     * @return CGU[] Returns an array of CGU objects
+//     * @return GCU[] Returns an array of GCU objects
 //     */
 //    public function findByExampleField($value): array
 //    {
@@ -68,7 +68,7 @@ class CGURepository extends ServiceEntityRepository
 //        ;
 //    }
 
-//    public function findOneBySomeField($value): ?CGU
+//    public function findOneBySomeField($value): ?GCU
 //    {
 //        return $this->createQueryBuilder('c')
 //            ->andWhere('c.exampleField = :val')

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xliff xmlns="urn:oasis:names:tc:xliff:document:2.0" version="2.0" srcLang="fr" trgLang="fr">
-  <file id="CGUAdmin.fr">
+  <file id="GCUAdmin.fr">
     <unit id="VbnW1vS" name="Version Number">
       <segment>
         <source>Version Number</source>
@@ -13,9 +13,9 @@
         <target>Date de mise en place</target>
       </segment>
     </unit>
-    <unit id="16bTRr4" name="C G U">
+    <unit id="16bTRr4" name="G C U">
       <segment>
-        <source>C G U</source>
+        <source>G C U</source>
         <target>CGU</target>
       </segment>
     </unit>
@@ -25,21 +25,21 @@
         <target>Contenu</target>
       </segment>
     </unit>
-    <unit id="aSV85ef" name="C G U List">
+    <unit id="aSV85ef" name="G C U List">
       <segment>
-        <source>C G U List</source>
+        <source>G C U List</source>
         <target>CGU</target>
       </segment>
     </unit>
-    <unit id="x2RL7ct" name="C G U Create">
+    <unit id="x2RL7ct" name="G C U Create">
       <segment>
-        <source>C G U Create</source>
+        <source>G C U Create</source>
         <target>Créer</target>
       </segment>
     </unit>
-    <unit id="IeAitoB" name="CGU">
+    <unit id="IeAitoB" name="GCU">
       <segment>
-        <source>CGU</source>
+        <source>GCU</source>
         <target>CGU</target>
       </segment>
     </unit>

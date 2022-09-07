@@ -16,7 +16,7 @@ use Sonata\AdminBundle\Show\ShowMapper;
 use Sonata\Form\Type\DateTimePickerType;
 use Symfony\Component\Validator\Constraints\GreaterThan;
 
-final class CGUAdmin extends AbstractAdmin
+final class GCUAdmin extends AbstractAdmin
 {
     protected function configureDefaultSortValues(array &$sortValues): void
     {
@@ -43,7 +43,7 @@ final class CGUAdmin extends AbstractAdmin
             ->add(ListMapper::NAME_ACTIONS, null, [
                 'actions' => [
                     'show' => [],
-                    'edit' => ['template' => '/admin/rgpd/cgu/list/edit_action.html.twig']
+                    'edit' => ['template' => '@PdkRgpd/admin/gcu/list/edit_action.html.twig']
                 ],
             ])
         ;
@@ -80,7 +80,6 @@ final class CGUAdmin extends AbstractAdmin
             ->end()
             ->end()
             ->add('body', CKEditorType::class, [
-//                'disabled' => $disabled,
                 'config_name' => 'default',
             ])
         ;

@@ -16,10 +16,10 @@ services:
     calls:
       - [ setTranslationDomain, [ 'PrivacyPolicyAdmin' ] ]
 
-  pdk.rgpd.admin.cgu:
-    class: Pdk\RgpdBundle\Admin\CGUAdmin
+  pdk.rgpd.admin.gcu:
+    class: Pdk\RgpdBundle\Admin\GCUAdmin
     tags:
-      - { name: sonata.admin, model_class: Pdk\RgpdBundle\Entity\CGU, controller: ~, manager_type: orm, group: admin, label: CGU }
+      - { name: sonata.admin, model_class: Pdk\RgpdBundle\Entity\GCU, controller: ~, manager_type: orm, group: admin, label: GCU }
     calls:
-      - [ setTranslationDomain, [ 'CGUAdmin' ] ]
+      - [ setTranslationDomain, [ 'GCUAdmin' ] ]
 ###< Sonata Admin ###

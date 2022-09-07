@@ -2,15 +2,15 @@
 
 namespace Pdk\RgpdBundle\Entity;
 
-use Pdk\RgpdBundle\Repository\CGURepository;
+use Pdk\RgpdBundle\Repository\GCURepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Timestampable\Traits\TimestampableEntity;
 use Symfony\Component\Validator\Constraints\NotNull;
 
-#[ORM\Entity(repositoryClass: CGURepository::class)]
-#[ORM\Table('rgpd__cgu')]
-class CGU
+#[ORM\Entity(repositoryClass: GCURepository::class)]
+#[ORM\Table('rgpd__gcu')]
+class GCU
 {
     use TimestampableEntity;
 

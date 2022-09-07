@@ -48,7 +48,7 @@ final class PrivacyPolicyAdmin extends AbstractAdmin
             ->add(ListMapper::NAME_ACTIONS, null, [
                 'actions' => [
                     'show' => [],
-                    'edit' => ['template' => 'admin/rgpd/privacy_policy/list/edit_action.html.twig']
+                    'edit' => ['template' => '@PdkRgpd/admin/privacy_policy/list/edit_action.html.twig']
                 ],
             ])
         ;
