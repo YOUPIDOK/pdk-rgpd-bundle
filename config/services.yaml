@@ -2,3 +2,24 @@ services:
   _defaults:
     autowire: true      # Automatically injects dependencies in your services.
     autoconfigure: true # Automatically registers your services as commands, event subscribers, etc.
+
+###< Bundle ###
+  Pdk\RgpdBundle\:
+    resource: '../src'
+###> Bundle ###
+
+###> Sonata Admin ###
+  pdk.rgpd.admin.privacy_policy:
+    class: Pdk\RgpdBundle\Admin\PrivacyPolicyAdmin
+    tags:
+      - { name: sonata.admin, model_class: Pdk\RgpdBundle\Entity\PrivacyPolicy, controller: ~, manager_type: orm, group: admin, label: PrivacyPolicies }
+    calls:
+      - [ setTranslationDomain, [ 'PrivacyPolicyAdmin' ] ]
+
+  pdk.rgpd.admin.cgu:
+    class: Pdk\RgpdBundle\Admin\CGUAdmin
+    tags:
+      - { name: sonata.admin, model_class: Pdk\RgpdBundle\Entity\CGU, controller: ~, manager_type: orm, group: admin, label: CGU }
+    calls:
+      - [ setTranslationDomain, [ 'CGUAdmin' ] ]
+###< Sonata Admin ###

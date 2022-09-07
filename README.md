@@ -1,4 +1,13 @@
 # PdkRgpdBundle
+> Sonata RGPD manager
+> * Privacy policy management
+> * GCU management
+> * GCT management
+
+## Dependencies
+* Symfony ``6.1``
+* Sonata ``4.1``
+
 ## Installation
 ###  Step 1
 ```json
@@ -12,5 +21,6 @@
 ```
 ### Step 2
 ``composer require pdk/rgpd-bundle``
+
 ## Configuration
         

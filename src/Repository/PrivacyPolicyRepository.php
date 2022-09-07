@@ -2,7 +2,7 @@
 
 namespace Pdk\RgpdBundle\Repository;
 
-use App\Entity\RGPD\PrivacyPolicy;
+use Pdk\RgpdBundle\Entity\PrivacyPolicy;
 use DateTime;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;

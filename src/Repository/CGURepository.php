@@ -2,7 +2,7 @@
 
 namespace Pdk\RgpdBundle\Repository;
 
-use App\Entity\RGPD\CGU;
+use Pdk\RgpdBundle\Entity\CGU;
 use DateTime;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
