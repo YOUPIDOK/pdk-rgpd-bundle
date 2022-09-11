@@ -12,8 +12,8 @@ use Symfony\Component\Validator\Constraints\NotNull;
 #[ORM\Table('rgpd__privacy_policy')]
 class PrivacyPolicy
 {
-    use TimestampableEntity;
     use RgpdTrait;
+    use TimestampableEntity;
 
     public function __toString(): string
     {

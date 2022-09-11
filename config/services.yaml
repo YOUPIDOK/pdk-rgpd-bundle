@@ -14,7 +14,7 @@ services:
     tags:
       - { name: sonata.admin, model_class: Pdk\RgpdBundle\Entity\PrivacyPolicy, controller: ~, manager_type: orm, group: admin, label: PrivacyPolicies }
     calls:
-      - [ setTranslationDomain, [ 'PrivacyPolicyAdmin' ] ]
+      - [ setTranslationDomain, [ 'PrivacyPolicyAdmin' ]]
 
   pdk.rgpd.admin.gcu:
     class: Pdk\RgpdBundle\Admin\GCUAdmin
@@ -22,4 +22,11 @@ services:
       - { name: sonata.admin, model_class: Pdk\RgpdBundle\Entity\GCU, controller: ~, manager_type: orm, group: admin, label: GCU }
     calls:
       - [ setTranslationDomain, [ 'GCUAdmin' ] ]
+
+  pdk.rgpd.admin.gcs:
+    class: Pdk\RgpdBundle\Admin\GCSAdmin
+    tags:
+      - { name: sonata.admin, model_class: Pdk\RgpdBundle\Entity\GCS, controller: ~, manager_type: orm, group: admin, label: GCS }
+    calls:
+      - [ setTranslationDomain, [ 'GCSAdmin' ]]
 ###< Sonata Admin ###

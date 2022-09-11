@@ -2,7 +2,7 @@
 > Sonata RGPD manager
 > * Privacy policy management
 > * GCU management
-> * GCT management
+> * GCS management
 
 ## Dependencies
 * Symfony ``6.1``
@@ -35,7 +35,5 @@ sonata_admin:
                 items:
                     - pdk.rgpd.admin.privacy_policy
                     - pdk.rgpd.admin.gcu
+                    - pdk.rgpd.admin.gcs
 ```
-
-
-        
