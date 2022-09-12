@@ -60,12 +60,12 @@ sonata_admin:
 pdk_rgpd:
   privacy_policy:
     activate: false
-    template:
+    template: @PdkRgpd/pages/privacy_policy.html.twig
   gcu:
     activate: false
-    template:
+    template: @PdkRgpd/pages/gcu.html.twig
   gcs:
     activate: false
-    template:
+    template: @PdkRgpd/pages/gcs.html.twig
   base_templae: 'base.html.twig'
 ```
