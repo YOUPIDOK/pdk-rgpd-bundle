@@ -6,18 +6,30 @@ namespace Pdk\RgpdBundle\Admin;
 
 use DateTime;
 use FOS\CKEditorBundle\Form\Type\CKEditorType;
+use Pdk\RgpdBundle\Repository\GCURepository;
 use Sonata\AdminBundle\Admin\AbstractAdmin;
 use Sonata\AdminBundle\Datagrid\DatagridInterface;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
+use Sonata\AdminBundle\FieldDescription\FieldDescriptionInterface;
 use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Route\RouteCollectionInterface;
 use Sonata\AdminBundle\Show\ShowMapper;
 use Sonata\Form\Type\DateTimePickerType;
+use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Symfony\Component\Validator\Constraints\GreaterThan;
 
 final class GCUAdmin extends AbstractAdmin
 {
+    private ?GCURepository $GCURepository = null;
+
+    public function setCGURepository(?GCURepository $GCURepository): self
+    {
+        $this->GCURepository = $GCURepository;
+
+        return $this;
+    }
+
     protected function configureDefaultSortValues(array &$sortValues): void
     {
         $sortValues[DatagridInterface::SORT_ORDER] = 'DESC';
@@ -35,6 +47,11 @@ final class GCUAdmin extends AbstractAdmin
     protected function configureListFields(ListMapper $list): void
     {
         $list
+            ->add('isCurrent', FieldDescriptionInterface::TYPE_BOOLEAN,[
+                'accessor' => function ($gcu) {
+                    return $gcu == $this->GCURepository->findCurrentGCU();
+                }
+            ])
             ->add('isDraft')
             ->add('versionNumber')
             ->add('implementationDate', null, [
@@ -43,7 +60,8 @@ final class GCUAdmin extends AbstractAdmin
             ->add(ListMapper::NAME_ACTIONS, null, [
                 'actions' => [
                     'show' => [],
-                    'edit' => ['template' => '@PdkRgpd/admin/gcu/list/edit_action.html.twig']
+                    'edit' => ['template' => '@PdkRgpd/admin/gcu/list/edit_action.html.twig'],
+                    'activate' => ['template' => '@PdkRgpd/admin/gcu/list/activate_action.html.twig']
                 ],
             ])
         ;
@@ -53,6 +71,8 @@ final class GCUAdmin extends AbstractAdmin
     {
         $collection->remove('delete');
         $collection->remove('export');
+        $collection->add('activate', $this->getRouterIdParameter().'/activate-cgu');
+
     }
 
     protected function configureFormFields(FormMapper $form): void

@@ -12,21 +12,25 @@ services:
   pdk.rgpd.admin.privacy_policy:
     class: Pdk\RgpdBundle\Admin\PrivacyPolicyAdmin
     tags:
-      - { name: sonata.admin, model_class: Pdk\RgpdBundle\Entity\PrivacyPolicy, controller: ~, manager_type: orm, group: admin, label: PrivacyPolicies }
+      - { name: sonata.admin, model_class: Pdk\RgpdBundle\Entity\PrivacyPolicy, controller: Pdk\RgpdBundle\Controller\Admin\GCSAdminController, manager_type: orm, group: admin, label: PrivacyPolicies }
     calls:
       - [ setTranslationDomain, [ 'PrivacyPolicyAdmin' ]]
+      - [ setPrivacyPolicyRepository, [ '@Pdk\RgpdBundle\Repository\PrivacyPolicyRepository' ]]
+
 
   pdk.rgpd.admin.gcu:
     class: Pdk\RgpdBundle\Admin\GCUAdmin
     tags:
-      - { name: sonata.admin, model_class: Pdk\RgpdBundle\Entity\GCU, controller: ~, manager_type: orm, group: admin, label: GCU }
+      - { name: sonata.admin, model_class: Pdk\RgpdBundle\Entity\GCU, controller: Pdk\RgpdBundle\Controller\Admin\GCUAdminController, manager_type: orm, group: admin, label: GCU }
     calls:
-      - [ setTranslationDomain, [ 'GCUAdmin' ] ]
+      - [ setTranslationDomain, [ 'GCUAdmin' ]]
+      - [ setCGURepository, [ '@Pdk\RgpdBundle\Repository\GCURepository' ]]
 
   pdk.rgpd.admin.gcs:
     class: Pdk\RgpdBundle\Admin\GCSAdmin
     tags:
-      - { name: sonata.admin, model_class: Pdk\RgpdBundle\Entity\GCS, controller: ~, manager_type: orm, group: admin, label: GCS }
+      - { name: sonata.admin, model_class: Pdk\RgpdBundle\Entity\GCS, controller: Pdk\RgpdBundle\Controller\Admin\PrivacyPolicyAdminController, manager_type: orm, group: admin, label: GCS }
     calls:
       - [ setTranslationDomain, [ 'GCSAdmin' ]]
+      - [ setGCSRepository, [ '@Pdk\RgpdBundle\Repository\GCSRepository' ]]
 ###< Sonata Admin ###

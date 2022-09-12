@@ -7,6 +7,7 @@
 ## Dependencies
 * Symfony ``6.1``
 * Sonata ``4.1``
+* PrestaSitemap ``3.3``
 
 ## Installation
 ###  Step 1
@@ -23,9 +24,21 @@
 ``composer require pdk/rgpd-bundle``
 
 ## Configuration
+### Routes
+```yaml
+# config/routes/pdk_rgpd.yaml
+#
+# Create this file for register routes
+
+pdk_rgpd:
+  resource: "@PdkRgpdBundle/config/routes.yaml"
+```
 ### Sonata admin
 ```yaml
 # config/packages/sonata/sonata_admin.yaml
+#
+# If you add an admin part, don't forget to activate this
+
 sonata_admin:
     dashboard:
         groups:
@@ -36,4 +49,23 @@ sonata_admin:
                     - pdk.rgpd.admin.privacy_policy
                     - pdk.rgpd.admin.gcu
                     - pdk.rgpd.admin.gcs
+```
+### Bundle
+```yaml
+# config/pdk_rgpd.yaml
+#
+# You can override template or juste set the extends template
+# By default each feature are disabled
+
+pdk_rgpd:
+  privacy_policy:
+    activate: false
+    template:
+  gcu:
+    activate: false
+    template:
+  gcs:
+    activate: false
+    template:
+  base_templae: 'base.html.twig'
 ```

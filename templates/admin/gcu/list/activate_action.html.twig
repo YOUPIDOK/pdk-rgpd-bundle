@@ -1,0 +1,10 @@
+{% if object.isDraft %}
+    <a
+            href="{{ admin.generateObjectUrl('activate', object) }}"
+            class="btn btn-sm btn-default edit_link"
+            title="Activer {{ object }}"
+    >
+        <i class="fas fa-play-circle" aria-hidden="true"></i>
+        <span class="sr-only">Activer</span>
+    </a>
+{% endif %}

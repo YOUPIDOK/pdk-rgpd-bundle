@@ -1,0 +1,3 @@
+pdk_rgpd.controller:
+  resource: '../src/Controller/'
+  type: annotation

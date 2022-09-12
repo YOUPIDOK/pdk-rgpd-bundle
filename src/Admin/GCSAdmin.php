@@ -6,10 +6,12 @@ namespace Pdk\RgpdBundle\Admin;
 
 use DateTime;
 use FOS\CKEditorBundle\Form\Type\CKEditorType;
+use Pdk\RgpdBundle\Repository\GCSRepository;
 use Sonata\AdminBundle\Admin\AbstractAdmin;
 use Sonata\AdminBundle\Datagrid\DatagridInterface;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
+use Sonata\AdminBundle\FieldDescription\FieldDescriptionInterface;
 use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Route\RouteCollectionInterface;
 use Sonata\AdminBundle\Show\ShowMapper;
@@ -18,6 +20,15 @@ use Symfony\Component\Validator\Constraints\GreaterThan;
 
 final class GCSAdmin extends AbstractAdmin
 {
+    private ?GCSRepository $GCSRepository = null;
+
+    public function setGCSRepository(?GCSRepository $GCSRepository): self
+    {
+        $this->GCSRepository = $GCSRepository;
+
+        return $this;
+    }
+
     protected function configureDefaultSortValues(array &$sortValues): void
     {
         $sortValues[DatagridInterface::SORT_ORDER] = 'DESC';
@@ -35,6 +46,11 @@ final class GCSAdmin extends AbstractAdmin
     protected function configureListFields(ListMapper $list): void
     {
         $list
+            ->add('isCurrent', FieldDescriptionInterface::TYPE_BOOLEAN,[
+                'accessor' => function ($gcu) {
+                    return $gcu == $this->GCSRepository->findCurrentGCS();
+                }
+            ])
             ->add('isDraft')
             ->add('versionNumber')
             ->add('implementationDate', null, [
@@ -43,7 +59,8 @@ final class GCSAdmin extends AbstractAdmin
             ->add(ListMapper::NAME_ACTIONS, null, [
                 'actions' => [
                     'show' => [],
-                    'edit' => ['template' => '@PdkRgpd/admin/gcs/list/edit_action.html.twig']
+                    'edit' => ['template' => '@PdkRgpd/admin/gcs/list/edit_action.html.twig'],
+                    'activate' => ['template' => '@PdkRgpd/admin/gcs/list/activate_action.html.twig']
                 ],
             ])
         ;
@@ -53,6 +70,7 @@ final class GCSAdmin extends AbstractAdmin
     {
         $collection->remove('delete');
         $collection->remove('export');
+        $collection->add('activate', $this->getRouterIdParameter().'/activate-cgs');
     }
 
     protected function configureFormFields(FormMapper $form): void

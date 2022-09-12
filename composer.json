@@ -10,6 +10,7 @@
     "sonata-project/admin-bundle": "^4.10.0",
     "ext-json": "*",
     "ext-zip": "*",
+    "presta/sitemap-bundle": "^3.3",
     "symfony/console": "6.1.*",
     "symfony/config": "6.1.*",
     "symfony/doctrine-bridge": "6.1.*",

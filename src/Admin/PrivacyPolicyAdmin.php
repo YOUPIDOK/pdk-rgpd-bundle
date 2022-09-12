@@ -6,10 +6,13 @@ namespace Pdk\RgpdBundle\Admin;
 
 use DateTime;
 use FOS\CKEditorBundle\Form\Type\CKEditorType;
+use Pdk\RgpdBundle\Repository\GCURepository;
+use Pdk\RgpdBundle\Repository\PrivacyPolicyRepository;
 use Sonata\AdminBundle\Admin\AbstractAdmin;
 use Sonata\AdminBundle\Datagrid\DatagridInterface;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
+use Sonata\AdminBundle\FieldDescription\FieldDescriptionInterface;
 use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Route\RouteCollectionInterface;
 use Sonata\AdminBundle\Show\ShowMapper;
@@ -22,6 +25,15 @@ use Symfony\Component\Validator\Constraints\NotNull;
 
 final class PrivacyPolicyAdmin extends AbstractAdmin
 {
+    private ?PrivacyPolicyRepository $privacyPolicyRepository = null;
+
+    public function setPrivacyPolicyRepository(?PrivacyPolicyRepository $privacyPolicyRepository): self
+    {
+        $this->privacyPolicyRepository = $privacyPolicyRepository;
+
+        return $this;
+    }
+
 
     protected function configureDefaultSortValues(array &$sortValues): void
     {
@@ -40,6 +52,11 @@ final class PrivacyPolicyAdmin extends AbstractAdmin
     protected function configureListFields(ListMapper $list): void
     {
         $list
+            ->add('isCurrent', FieldDescriptionInterface::TYPE_BOOLEAN,[
+                'accessor' => function ($gcu) {
+                    return $gcu == $this->privacyPolicyRepository->findCurrentPrivacyPolicy();
+                }
+            ])
             ->add('isDraft')
             ->add('versionNumber')
             ->add('implementationDate', null, [
@@ -48,7 +65,8 @@ final class PrivacyPolicyAdmin extends AbstractAdmin
             ->add(ListMapper::NAME_ACTIONS, null, [
                 'actions' => [
                     'show' => [],
-                    'edit' => ['template' => '@PdkRgpd/admin/privacy_policy/list/edit_action.html.twig']
+                    'edit' => ['template' => '@PdkRgpd/admin/privacy_policy/list/edit_action.html.twig'],
+                    'activate' => ['template' => '@PdkRgpd/admin/privacy_policy/list/activate_action.html.twig']
                 ],
             ])
         ;
@@ -58,6 +76,7 @@ final class PrivacyPolicyAdmin extends AbstractAdmin
     {
         $collection->remove('delete');
         $collection->remove('export');
+        $collection->add('activate', $this->getRouterIdParameter().'/activate-privacy-policy');
     }
 
     protected function configureFormFields(FormMapper $form): void
