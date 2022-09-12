@@ -35,7 +35,7 @@ pdk_rgpd:
 ```
 ### Sonata admin
 ```yaml
-# config/packages/sonata/sonata_admin.yaml
+# config/packages/sonata_admin.yaml
 #
 # If you add an admin part, don't forget to activate this
 
