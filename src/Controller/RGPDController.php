@@ -18,7 +18,7 @@ class RGPDController extends AbstractController
 {
     public function __construct(private ParameterBagInterface $parameterBag){}
 
-    #[Route('/politique-de-confidentialite', name: 'privacy_policy', options: ['sitemap' => true], condition: '%pdk_rgpd.privacy_policy.activate% === 1')]
+    #[Route('/politique-de-confidentialite', name: 'privacy_policy', condition: '%pdk_rgpd.privacy_policy.activate% === 1')]
     public function privacyPolicy(PrivacyPolicyRepository $privacyPolicyRepository): Response
     {
         $currentPrivacyPolicy = $privacyPolicyRepository->findCurrentPrivacyPolicy();
@@ -31,7 +31,7 @@ class RGPDController extends AbstractController
         ]);
     }
 
-    #[Route('/conditions-generales-d-utilisation', name: 'gcu', options: ['sitemap' => true], condition: '%pdk_rgpd.gcu.activate% === 1')]
+    #[Route('/conditions-generales-d-utilisation', name: 'gcu', condition: '%pdk_rgpd.gcu.activate% === 1')]
     public function cgu(GCURepository $GCURepository): Response
     {
         $currentCGU = $GCURepository->findCurrentGCU();
@@ -44,7 +44,7 @@ class RGPDController extends AbstractController
         ]);
     }
 
-    #[Route('/conditions-generales-de-vente', name: 'gcs', options: ['sitemap' => true], condition: '%pdk_rgpd.gcs.activate% === 1')]
+    #[Route('/conditions-generales-de-vente', name: 'gcs', condition: '%pdk_rgpd.gcs.activate% === 1')]
     public function cgs(GCSRepository $GCSRepository): Response
     {
         $currentCGS = $GCSRepository->findCurrentGCS();
